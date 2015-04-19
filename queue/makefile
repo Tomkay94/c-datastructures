@@ -1,5 +1,6 @@
 CFLAGS=-Wall
 GCC=gcc
+NOT_TESTING=-D NOT_TESTING
 
 #
 # Compile and run the test suite.
@@ -12,7 +13,7 @@ tests: tests.c
 # Compile the source files.
 #
 compile: queue.c queue.h
-	$(GCC) $(CFLAGS) queue.c -o queue.out	
+	$(GCC) $(CFLAGS) $(NOT_TESTING) queue.c -o queue.out	
 
 #
 # Remove all executables.
