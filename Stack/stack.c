@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "stack.h"
 
-
 struct Stack {
 	int size;
 	int capacity;
