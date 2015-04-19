@@ -20,7 +20,3 @@ bool has_node(struct Node* head, int data) {
 	}
 	return false;
 }
-
-int main() {
-	return 0;
-}
