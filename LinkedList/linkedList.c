@@ -10,6 +10,10 @@ struct Node {
 	struct Node* next;
 };
 
+bool hasNode(struct Node* head, int data) {
+	return true;
+}
+
 int main(int arc, char **argc) {
 	// Create size for the nodes
 	struct Node* head   = malloc(sizeof(struct Node));
