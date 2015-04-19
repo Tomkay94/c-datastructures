@@ -1,7 +1,5 @@
 #include "../test_framework/min_unit.h"
 #include "node.c"
-#include <stdlib.h>
-#define TEST_IMPORT 1
 
 int tests_run = 0;
 

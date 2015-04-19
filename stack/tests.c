@@ -1,6 +1,5 @@
 #include "../test_framework/min_unit.h"
 #include "stack.c"
-#include <stdlib.h>
 
 int tests_run = 0;
 
