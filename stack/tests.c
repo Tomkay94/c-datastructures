@@ -6,10 +6,12 @@ int tests_run = 0;
 
 /* Test Cases */
 char *test_stack_create_sets_members(void) {
-	struct Stack *s = malloc(sizeof(struct Stack));
-	MU_ASSERT("stack_create sets capacity", s->capacity == 0);
+	struct Stack *s = stack_create(5);
+	MU_ASSERT("stack_create sets capacity", s->capacity == 5);
 	MU_ASSERT("stack_create sets size", s->size == 0);
-	MU_ASSERT("stack_create mallocs capacity", 1);
+	MU_ASSERT("stack_create creates correct capacity", 1
+		//sizeof(*(s->stk))/sizeof(int) == s->capacity
+	);
 }
 
 /* Test Suite */
@@ -23,7 +25,7 @@ char *test_suite(void) {
 int main(int argc, char **argv) {
 	char *result = test_suite();
 	printf("Number of tests run: %d\n", tests_run);
-	if (result) printf("FAIL %s\n", result);
+	if (result) printf("FAIL: %s\n", result);
 	return 0;
 }
 #endif

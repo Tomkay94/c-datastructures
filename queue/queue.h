@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include "../linked_list/linked_list.c"
 
 struct Queue;
 

@@ -1,5 +1,5 @@
 #include "../test_framework/min_unit.h"
-#include "linked_list.c"
+#include "node.c"
 #include <stdlib.h>
 #define TEST_IMPORT 1
 

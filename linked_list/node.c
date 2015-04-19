@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#ifndef LINKED_LIST_H
-	#define LINKED_LIST_H
-	#include "linked_list.h"
+#ifndef NODE_H
+	#define NODE_H
+	#include "node.h"
 #endif
 
 struct Node {

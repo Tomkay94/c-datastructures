@@ -32,6 +32,7 @@ bool q_is_empty(struct Queue *queue) {
 
 #ifdef NOT_TESTING
 int main(void) {
+	struct Node n = node_create();
 	return 0;
 }
 #endif

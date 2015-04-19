@@ -12,8 +12,8 @@ tests: tests.c
 #
 # Compile the source files.
 #
-compile: linked_list.c linked_list.h
-	$(GCC) $(CFLAGS) $(NOT_TESTING) linked_list.c -o linked_list.out	
+compile: node.c node.h
+	$(GCC) $(CFLAGS) $(NOT_TESTING) node.c -o node.out	
 
 #
 # Remove all executables.

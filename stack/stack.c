@@ -12,7 +12,7 @@ struct Stack* stack_create(int capacity) {
 	struct Stack *s = malloc(sizeof(struct Stack));
 	s->size = 0;
 	s->capacity = capacity;
-	s->stk = malloc(sizeof(int[capacity]));
+	s->stk = malloc(sizeof(int) * capacity);
 	return s;
 }
 
