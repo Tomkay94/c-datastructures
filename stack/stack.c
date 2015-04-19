@@ -5,7 +5,7 @@
 struct Stack {
 	int size;
 	int capacity;
-	int* stk;
+	int *stk;
 };
 
 struct Stack* stack_create(int capacity) {
@@ -16,7 +16,7 @@ struct Stack* stack_create(int capacity) {
 	return k;
 }
 
-void stack_pop(struct Stack* s) {
+void stack_pop(struct Stack *s) {
 	if (s->size > 0) {
 		s->stk[s->size - 1] = 0;
 		--(s->size);
@@ -33,7 +33,7 @@ void stack_show(struct Stack *s) {
 	return;
 }
 
-void stack_push(struct Stack* s, int data) {
+void stack_push(struct Stack *s, int data) {
 	if (s->size < s->capacity) {
 		s->stk[s->size] = data;
 		++(s->size);
