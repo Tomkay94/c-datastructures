@@ -4,40 +4,58 @@
 
 struct Stack {
 	int size;
-	int capacity;
-	int *stk;
+	struct Node *top;
 };
 
-struct Stack* stack_create(int capacity) {
+struct Node {
+	int data;
+	struct Node *next;
+};
+
+struct Stack* stack_create(void) {
 	struct Stack *s = malloc(sizeof(struct Stack));
+	s->top = malloc(sizeof(struct Node));
 	s->size = 0;
-	s->capacity = capacity;
-	s->stk = malloc(sizeof(int) * capacity);
 	return s;
 }
 
+struct Node* node_create(int d) {
+	struct Node *n = malloc(sizeof(struct Node));
+	n->next = NULL;
+	n->data = d;
+	return n;
+}
+
 void stack_pop(struct Stack *s) {
-	if (s->size > 0) {
-		s->stk[s->size - 1] = 0;
+	if (s->top != NULL) {
+		s->top = s->top->next;
 		--(s->size);
 	}
 	return;
 }
 
 void stack_show(struct Stack *s) {
-        int i = 0;
-	for(; i < s->capacity; ++i) {
-	        printf("s[%i]=%i\n", i, s->stk[i]);
-        }
+	struct Node *curr = s->top;
+	while(curr->next != NULL) {
+   		printf("item=%i\n", curr->data);
+		curr = curr->next;
+	}
 	printf("\n");
 	return;
 }
 
 void stack_push(struct Stack *s, int data) {
-	if (s->size < s->capacity) {
-		s->stk[s->size] = data;
-		++(s->size);
+	struct Node *head = malloc(sizeof(struct Node));
+	head->data = data;
+	head->next = NULL;
+
+	/* Prepend the head to the top of the stack. */
+	if (s->top != NULL) {
+		head->next = s->top;
 	}
+
+	s->top = head;
+	++(s->size);
 	return;
 }
 

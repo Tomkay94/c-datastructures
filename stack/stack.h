@@ -1,8 +1,11 @@
 /* Stack data type. */
 struct Stack;
+struct Node;
 
-/* Stack method declarations */
-struct Stack* stack_create(int capacity);
+/* Stack prototypes */
+struct Stack* stack_create();
+struct Node* node_create(int data);
+
 void stack_pop(struct Stack *s);
 void stack_push(struct Stack *s, int data);
 void stack_show(struct Stack *s);
