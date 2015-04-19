@@ -13,7 +13,7 @@ struct Stack* stack_create(int capacity) {
 	s->size = 0;
 	s->capacity = capacity;
 	s->stk = malloc(sizeof(int[capacity]));
-	return k;
+	return s;
 }
 
 void stack_pop(struct Stack *s) {
