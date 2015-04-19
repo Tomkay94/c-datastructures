@@ -19,9 +19,11 @@ char *test_suite(void) {
 }
 
 /* Test Runner */
+#ifndef NOT_TESTING
 int main(int argc, char **argv) {
 	char *result = test_suite();
 	printf("Number of tests run: %d\n", tests_run);
 	if (result) printf("FAIL %s\n", result);
 	return 0;
 }
+#endif

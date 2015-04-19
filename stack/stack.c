@@ -40,3 +40,9 @@ void stack_push(struct Stack *s, int data) {
 	}
 	return;
 }
+
+#ifdef NOT_TESTING
+int main(void) {
+	return 0;
+}
+#endif
