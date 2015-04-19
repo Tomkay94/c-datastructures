@@ -1,6 +1,7 @@
 #include "../test_framework/min_unit.h"
 #include "linked_list.c"
 #include <stdlib.h>
+#define TEST_IMPORT 1
 
 int tests_run = 0;
 
@@ -46,9 +47,11 @@ char *test_suite(void) {
 }
 
 /* Test Runner */
+#ifndef NOT_TESTING
 int main(int ac, char **av) {
 	char *result = test_suite();
     printf("number of tests run: %d\n", tests_run);
     if (result) printf("FAIL: %s\n", result);
     return 0 != result;
 }
+#endif

@@ -30,3 +30,9 @@ bool has_node(struct Node* head, int data) {
 	}
 	return false;
 }
+
+#ifdef NOT_TESTING
+	int main() {
+		return 0;
+	}
+#endif

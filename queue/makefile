@@ -1,6 +1,5 @@
 CFLAGS=-Wall
 GCC=gcc
-NOT_TESTING=-D NOT_TESTING
 
 #
 # Compile and run the test suite.
@@ -12,8 +11,8 @@ tests: tests.c
 #
 # Compile the source files.
 #
-compile: linked_list.c linked_list.h
-	$(GCC) $(CFLAGS) $(NOT_TESTING) linked_list.c -o linked_list.out	
+compile: queue.c queue.h
+	$(GCC) $(CFLAGS) queue.c -o queue.out	
 
 #
 # Remove all executables.
