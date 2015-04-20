@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "queue.h"
+#ifndef QUEUE_H
+	#define QUEUE_H
+	#include "queue.h"
+#endif
 
 struct Queue {
 	int size;
@@ -50,6 +53,7 @@ void enqueue(struct Queue *q, int data) {
 
 void dequeue(struct Queue *q) {
 
+	/* Dequeue from an empty queue. */
 	if (q->size == 0) {
 		return;
 	}
@@ -60,6 +64,7 @@ void dequeue(struct Queue *q) {
 		q->back = NULL;
 	}
 
+	/* Regular case. */
 	if (q->size > 1) {
 		q->front = q->front->next;
 	}
