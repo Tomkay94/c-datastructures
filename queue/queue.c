@@ -31,7 +31,7 @@ struct Node* node_create(int d) {
 }
 
 /* Adds an element to the back of the queue. */
-void q_enqueue(struct Queue *q, int data) {
+void enqueue(struct Queue *q, int data) {
 	struct Node *head = node_create(data);
 
 	/* First enqueue on empty. */
@@ -48,7 +48,7 @@ void q_enqueue(struct Queue *q, int data) {
 	return;
 }
 
-void q_dequeue(struct Queue *q) {
+void dequeue(struct Queue *q) {
 
 	if (q->size == 0) {
 		return;

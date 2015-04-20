@@ -16,7 +16,7 @@ char *test_queue_create_sets_members(void) {
 
 char *test_enqueue_on_empty(void) {
 	struct Queue *q = queue_create();
-	q_enqueue(q, 5);
+	enqueue(q, 5);
 	MU_ASSERT("enqueue appends node to empty queue", q->front->data == 5);
 
 	free(q);
@@ -27,7 +27,7 @@ char *test_dequeue_on_empty(void) {
 	struct Queue *q = queue_create();
 
 	MU_ASSERT("queue empty before dequeue", q->size == 0);
-	q_dequeue(q);
+	dequeue(q);
 	MU_ASSERT("queue empty after dequeue", q->size == 0);
 
 	free(q);
@@ -37,13 +37,13 @@ char *test_dequeue_on_empty(void) {
 char *test_enqueue_updates_size(void) {
 	struct Queue *q = queue_create();
 
-	q_enqueue(q, 5);
+	enqueue(q, 5);
 	MU_ASSERT("enqueue updates size to 1", q->size == 1);
 
-	q_enqueue(q, 15);
+	enqueue(q, 15);
 	MU_ASSERT("enqueue updates size to 2", q->size == 2);
 
-	q_enqueue(q, 25);
+	enqueue(q, 25);
 	MU_ASSERT("enqueue updates size to 3", q->size == 3);
 
 	free(q);
@@ -53,17 +53,17 @@ char *test_enqueue_updates_size(void) {
 char *test_dequeue_updates_size(void) {
     struct Queue *q = queue_create();
 
-	q_enqueue(q, 5);
-	q_enqueue(q, 15);
-	q_enqueue(q, 25);
+	enqueue(q, 5);
+	enqueue(q, 15);
+	enqueue(q, 25);
 
-    q_dequeue(q);
+    dequeue(q);
     MU_ASSERT("dequeue updates size to 2", q->size == 2);
 
-    q_dequeue(q);
+    dequeue(q);
     MU_ASSERT("dequeue updates size to 1", q->size == 1);
 
-    q_dequeue(q);
+    dequeue(q);
     MU_ASSERT("dequeue updates size to 0", q->size == 0);
 
     free(q);
@@ -71,6 +71,8 @@ char *test_dequeue_updates_size(void) {
 }
 
 char *test_enqueue_updates_back_ref(void) {
+
+
 	return 0;
 }
 
