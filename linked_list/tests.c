@@ -10,6 +10,7 @@ char *test_set_node_members(void) {
 	n->next = NULL;
 	MU_ASSERT("node data was set", n->data == 10);
 	MU_ASSERT("node next was set", n->next == NULL);
+
 	free(n);
 	return 0;
 }
@@ -32,8 +33,12 @@ char *test_chain_nodes(void) {
 
 	MU_ASSERT("mid link was set to tail", mid->next == tail);
 	MU_ASSERT("mid next data is tail data", mid->next->data == 15);
-	
+
 	MU_ASSERT("tail link was set to NULL", tail->next == NULL);
+
+	free(head);
+	free(mid);
+	free(tail);
 	return 0;
 }
 

@@ -50,6 +50,10 @@ void q_enqueue(struct Queue *q, int data) {
 
 void q_dequeue(struct Queue *q) {
 
+	if (q->size == 0) {
+		return;
+	}
+
 	/* Dequeue the only node. */
 	if (q->size == 1) {
 		q->front = NULL;
