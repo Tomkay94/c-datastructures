@@ -20,7 +20,7 @@ struct Node* node_create(void) {
 
 /* Return true if the linked list has a Node with 
    value data.*/
-bool has_node(struct Node* head, int data) {
+bool contains_data(struct Node* head, int data) {
 	struct Node* curr = head;
 	while(curr != NULL) {
 		if (curr->data == data) {

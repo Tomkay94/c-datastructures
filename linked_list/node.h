@@ -5,4 +5,6 @@ struct Node;
 
 /* Node methods */
 struct Node* node_create(void);
-bool hasNode(struct Node* head, int data);
+bool contains_data(struct Node *head, int data);
+void remove_data(struct Node *head, int data);
+void append_data(struct Node *head, int data);
