@@ -8,13 +8,17 @@ char *test_stack_create_sets_members(void) {
 	struct Stack *s = stack_create();
 	MU_ASSERT("stack_create sets size", s->size == 0);
 	MU_ASSERT("stack_create sets top next", s->top->next == NULL);
+
+	free(s);
 	return 0;
 }
 
 char *test_node_create_sets_members(void) {
-	struct Node *node1 = node_create(5);
-	MU_ASSERT("node_create sets data", node1->data == 5);
-	MU_ASSERT("node_create sets next null", node1->next == NULL);
+	struct Node *n = node_create(5);
+	MU_ASSERT("node_create sets data", n->data == 5);
+	MU_ASSERT("node_create sets next null", n->next == NULL);
+
+	free(n);
 	return 0;
 }
 
@@ -29,6 +33,12 @@ char *test_stack_push_updates_size(void) {
 
     stack_push(s, 20);
     MU_ASSERT("stack_push updates size to 3", s->size == 3);
+
+	free(s);
+	return 0;
+}
+
+char *test_stack_push_updates_top_ref(void) {
 	return 0;
 }
 
