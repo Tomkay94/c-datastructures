@@ -12,13 +12,23 @@ struct Node {
 
 /* Create and set default memebrs for a Node. */
 /* Return a pointer to the created Node. */
-struct Node* node_create(void) {
+struct Node* node_create(int data) {
 	struct Node *n = malloc(sizeof(struct Node));
+	n->data = data;
 	n->next = NULL;
 	return n;
 }
 
-/* Return true if the linked list has a Node with 
+/* Create a node with data and append it to head. */
+void append_data(struct Node *head, int data) {
+	while(head->next != NULL) {
+		head = head->next;
+	}
+	head->next = node_create(data);
+	return;
+}
+
+/* Return true if the linked list has a Node with
    value data.*/
 bool contains_data(struct Node* head, int data) {
 	struct Node* curr = head;

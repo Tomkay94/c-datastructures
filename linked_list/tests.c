@@ -5,47 +5,41 @@ int tests_run = 0;
 
 /* Test Cases */
 char *test_set_node_members(void) {
-	struct Node* n = malloc(sizeof(struct Node));
-	n->data = 10;
-	n->next = NULL;
-	MU_ASSERT("node data was set", n->data == 10);
-	MU_ASSERT("node next was set", n->next == NULL);
+
+	struct Node* n = node_create(10);
+
+	MU_ASSERT("node_create sets data", n->data == 10);
+	MU_ASSERT("node_create sets next", n->next == NULL);
 
 	free(n);
 	return 0;
 }
 
-char *test_chain_nodes(void) {
-	struct Node* head = malloc(sizeof(struct Node));
-	struct Node* mid  = malloc(sizeof(struct Node));
-	struct Node* tail = malloc(sizeof(struct Node));
+char *test_append_data_links_refs(void) {
 
-	head->data = 5;
-	mid->data  = 10;
-	tail->data = 15;
+	struct Node *head = node_create(5);
+	append_data(head, 10);
+	append_data(head, 15);
 
-	head->next = mid;
-	mid->next  = tail;
-	tail->next = NULL;
+	MU_ASSERT("head link data was set", head->data == 5);
+	MU_ASSERT("head link was set",      head->next != NULL);
 
-	MU_ASSERT("head link was set to middle", head->next == mid);
-	MU_ASSERT("head next data is mid data", head->next->data == 10);
+	MU_ASSERT("mid link data was set",  head->next->data == 10);
+	MU_ASSERT("mid link was set",       head->next->next != NULL);
 
-	MU_ASSERT("mid link was set to tail", mid->next == tail);
-	MU_ASSERT("mid next data is tail data", mid->next->data == 15);
+	MU_ASSERT("tail link data was set", head->next->next->data == 15);
+	MU_ASSERT("tail link was set",      head->next->next->next == NULL);
 
-	MU_ASSERT("tail link was set to NULL", tail->next == NULL);
-
+	free(head->next->next);
+	free(head->next);
 	free(head);
-	free(mid);
-	free(tail);
 	return 0;
 }
 
 /* Test Suite */
 char *test_suite(void) {
 	MU_RUN_TEST(test_set_node_members);
-	MU_RUN_TEST(test_chain_nodes);
+	MU_RUN_TEST(test_append_data_links_refs);
     return 0;
 }
 
