@@ -13,6 +13,7 @@ struct Node {
 	struct Node *next;
 };
 
+/* Creates a Queue, and returns a pointer to it. */
 struct Queue* queue_create() {
 	struct Queue *q = malloc(sizeof(struct Queue));
 	q->size = 0;
@@ -21,6 +22,7 @@ struct Queue* queue_create() {
 	return q;
 }
 
+/* Creates a Node for the Queue, and returns a pointer to it. */
 struct Node* node_create(int d) {
 	struct Node *n = malloc(sizeof(struct Node));
 	n->data = d;
@@ -28,9 +30,11 @@ struct Node* node_create(int d) {
 	return n;
 }
 
+/* Adds an element to the back of the queue. */
 void q_enqueue(struct Queue *q, int data) {
 	struct Node *head = node_create(data);
 
+	/* First enqueue on empty. */
 	if (q->size == 0) {
 		q->front = head;
 	}
@@ -46,10 +50,17 @@ void q_enqueue(struct Queue *q, int data) {
 
 void q_dequeue(struct Queue *q) {
 
-	if (q->size > 0) {
-		q->front = q->front->next;
-		--(q->size);
+	/* Dequeue the only node. */
+	if (q->size == 1) {
+		q->front = NULL;
+		q->back = NULL;
 	}
+
+	if (q->size > 1) {
+		q->front = q->front->next;
+	}
+
+	--(q->size);
 	return;
 }
 
