@@ -9,7 +9,7 @@ char *test_stack_create_sets_members(void) {
 	MU_ASSERT("stack_create sets size",     s->size == 0);
 	MU_ASSERT("stack_create sets top next", s->top->next == NULL);
 
-	free(s);
+	free_stack(s);
 	return 0;
 }
 
@@ -34,7 +34,7 @@ char *test_stack_push_updates_size(void) {
     stack_push(s, 20);
     MU_ASSERT("stack_push updates size to 3", s->size == 3);
 
-	free(s);
+	free_stack(s);
 	return 0;
 }
 
@@ -50,7 +50,7 @@ char *test_stack_push_updates_top_ref(void) {
 	stack_push(s, 15);
     MU_ASSERT("stack_push updates top ref 3", s->top->data == 15);
 
-	free(s);
+	//free_stack(s);
 	return 0;
 }
 
@@ -69,7 +69,7 @@ char *test_stack_peek_equals_top_ref(void) {
     MU_ASSERT("stack_push updates top ref 3", s->top->data == 15);
     MU_ASSERT("stack_peek updates with top ref 3", s->top->data == stack_peek(s));
 
-    free(s);
+    free_stack(s);
 	return 0;
 }
 

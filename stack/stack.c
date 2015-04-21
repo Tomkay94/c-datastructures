@@ -34,7 +34,11 @@ struct Node* node_create(int d) {
 /* Removes the top node from the stack. */
 void stack_pop(struct Stack *s) {
 	if (s->top != NULL) {
+		struct Node *temp;
+		temp = s->top;
 		s->top = s->top->next;
+		free(temp);
+		temp = NULL;
 		--(s->size);
 	}
 	return;
@@ -74,12 +78,8 @@ int stack_peek(struct Stack *s) {
 
 /* Free the memory occupied by the stack nodes. */
 void free_stack(struct Stack *s) {
-    struct Node *temp = malloc(sizeof(struct Node));
-
     while (s->top != NULL) {
-    	temp = s->top;
-        s->top = s->top->next;
-        free(temp);
+    	stack_pop(s);
     }
 	return;
 }

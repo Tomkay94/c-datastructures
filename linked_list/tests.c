@@ -11,7 +11,7 @@ char *test_set_node_members(void) {
 	MU_ASSERT("node_create sets data", n->data == 10);
 	MU_ASSERT("node_create sets next", n->next == NULL);
 
-	free(n);
+	free_nodes(n);
 	return 0;
 }
 
@@ -30,9 +30,7 @@ char *test_append_data_links_refs(void) {
 	MU_ASSERT("tail link data was set", head->next->next->data == 15);
 	MU_ASSERT("tail link was set",      head->next->next->next == NULL);
 
-	free(head->next->next);
-	free(head->next);
-	free(head);
+	free_nodes(head);
 	return 0;
 }
 
@@ -44,9 +42,7 @@ char *test_contains_data_not_present(void) {
 
 	MU_ASSERT("list does not contain data", contains_data(head, 15) == false);
 
-	free(head->next->next);
-	free(head->next);
-	free(head);
+	free_nodes(head);
 	return 0;
 }
 
@@ -61,23 +57,25 @@ char *test_contains_data_present(void) {
 	append_data(head, 15);
 	MU_ASSERT("list contains data 15", contains_data(head, 15) == true);
 
-	free(head->next->next);
-	free(head->next);
-	free(head);
+	free_nodes(head);
 	return 0;
 }
 
 char *test_contains_data_one_node_true(void) {
 	struct Node *head = node_create(5);
+
 	MU_ASSERT("single node contains data", contains_data(head, 5) == true);
-	free(head);
+
+	free_nodes(head);
 	return 0;
 }
 
 char *test_contains_data_one_node_false(void) {
 	struct Node *head = node_create(5);
+
 	MU_ASSERT("single node contains data", contains_data(head, 10) == false);
-	free(head);
+
+	free_nodes(head);
 	return 0;
 }
 

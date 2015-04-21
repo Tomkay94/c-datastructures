@@ -10,7 +10,7 @@ char *test_queue_create_sets_members(void) {
 	MU_ASSERT("queue_create sets queue back ref", q->back != NULL);
 	MU_ASSERT("queue_create sets size to 0", q->size == 0);
 
-	free(q);
+	free_queue(q);
 	return 0;
 }
 
@@ -19,7 +19,7 @@ char *test_enqueue_on_empty(void) {
 	enqueue(q, 5);
 	MU_ASSERT("enqueue appends node to empty queue", q->front->data == 5);
 
-	free(q);
+	free_queue(q);
 	return 0;
 }
 
@@ -30,7 +30,7 @@ char *test_dequeue_on_empty(void) {
 	dequeue(q);
 	MU_ASSERT("queue empty after dequeue", q->size == 0);
 
-	free(q);
+	free_queue(q);
 	return 0;
 }
 
@@ -46,7 +46,7 @@ char *test_enqueue_updates_size(void) {
 	enqueue(q, 25);
 	MU_ASSERT("enqueue updates size to 3", q->size == 3);
 
-	free(q);
+	free_queue(q);
 	return 0;
 }
 
@@ -66,13 +66,11 @@ char *test_dequeue_updates_size(void) {
     dequeue(q);
     MU_ASSERT("dequeue updates size to 0", q->size == 0);
 
-    free(q);
+    free_queue(q);
     return 0;
 }
 
 char *test_enqueue_updates_back_ref(void) {
-
-
 	return 0;
 }
 
