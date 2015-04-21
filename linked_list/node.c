@@ -41,6 +41,18 @@ bool contains_data(struct Node* head, int data) {
 	return false;
 }
 
+/* Free the memory occupied by the linked list. */
+void free_nodes(struct Node *head) {
+	struct Node *temp;
+
+	while (head != NULL) {
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
+	return;
+}
+
 #ifdef NOT_TESTING
 	int main() {
 		return 0;

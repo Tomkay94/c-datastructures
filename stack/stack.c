@@ -72,6 +72,18 @@ int stack_peek(struct Stack *s) {
 	return s->top->data;
 }
 
+/* Free the memory occupied by the stack nodes. */
+void free_stack(struct Stack *s) {
+    struct Node *temp = malloc(sizeof(struct Node));
+
+    while (s->top != NULL) {
+    	temp = s->top;
+        s->top = s->top->next;
+        free(temp);
+    }
+	return;
+}
+
 #ifdef NOT_TESTING
 int main(void) {
 	return 0;

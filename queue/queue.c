@@ -51,6 +51,7 @@ void enqueue(struct Queue *q, int data) {
 	return;
 }
 
+/* Remove the node from the front of the queue. */
 void dequeue(struct Queue *q) {
 
 	/* Dequeue from an empty queue. */
@@ -66,13 +67,17 @@ void dequeue(struct Queue *q) {
 
 	/* Regular case. */
 	if (q->size > 1) {
+		struct Node *temp;
+		temp = q->front;
 		q->front = q->front->next;
+		free(temp);
 	}
 
 	--(q->size);
 	return;
 }
 
+/* Display the elements in the queue. */
 void q_show(struct Queue *q) {
 	if (q->size > 0) {
 		struct Node *curr = q->front;
@@ -85,6 +90,19 @@ void q_show(struct Queue *q) {
 	return;
 }
 
+/* Free the nodes in the queue. */
+void free_queue(struct Queue *q) {
+	struct Node *temp;
+
+	while(q->front != NULL) {
+		temp = q->front;
+		q->front = q->front->next;
+		free(temp);
+	}
+	return;
+}
+
+/* Return true if the queue is empty. */
 bool q_is_empty(struct Queue *q) {
 	return (q->size == 0);
 }
