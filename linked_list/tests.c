@@ -4,7 +4,8 @@
 int tests_run = 0;
 
 /* Test Cases */
-char *test_set_node_members(void) {
+char *
+test_set_node_members(void) {
 
 	struct Node* n = node_create(10);
 
@@ -15,7 +16,8 @@ char *test_set_node_members(void) {
 	return 0;
 }
 
-char *test_append_data_links_refs(void) {
+char *
+test_append_data_links_refs(void) {
 
 	struct Node *head = node_create(5);
 	append_data(head, 10);
@@ -34,7 +36,8 @@ char *test_append_data_links_refs(void) {
 	return 0;
 }
 
-char *test_contains_data_not_present(void) {
+char *
+test_contains_data_not_present(void) {
 	struct Node *head = node_create(5);
 
 	append_data(head, 10);
@@ -46,7 +49,8 @@ char *test_contains_data_not_present(void) {
 	return 0;
 }
 
-char *test_contains_data_present(void) {
+char *
+test_contains_data_present(void) {
 	struct Node *head = node_create(5);
 
 	MU_ASSERT("list does not contain data 10", contains_data(head, 10) == false);
@@ -61,7 +65,8 @@ char *test_contains_data_present(void) {
 	return 0;
 }
 
-char *test_contains_data_one_node_true(void) {
+char *
+test_contains_data_one_node_true(void) {
 	struct Node *head = node_create(5);
 
 	MU_ASSERT("single node contains data", contains_data(head, 5) == true);
@@ -70,7 +75,8 @@ char *test_contains_data_one_node_true(void) {
 	return 0;
 }
 
-char *test_contains_data_one_node_false(void) {
+char *
+test_contains_data_one_node_false(void) {
 	struct Node *head = node_create(5);
 
 	MU_ASSERT("single node contains data", contains_data(head, 10) == false);
@@ -80,7 +86,8 @@ char *test_contains_data_one_node_false(void) {
 }
 
 /* Test Suite */
-char *test_suite(void) {
+char *
+test_suite(void) {
 	MU_RUN_TEST(test_set_node_members);
 	MU_RUN_TEST(test_append_data_links_refs);
 
@@ -93,7 +100,8 @@ char *test_suite(void) {
 
 /* Test Runner */
 #ifndef NOT_TESTING
-int main(int ac, char **av) {
+int
+main(int ac, char **av) {
 	char *result = test_suite();
     printf("number of tests run: %d\n", tests_run);
     if (result) printf("FAIL: %s\n", result);

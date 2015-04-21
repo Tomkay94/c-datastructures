@@ -16,7 +16,8 @@ struct Node {
 };
 
 /* Creates an empty stack and returns a pointer to it. */
-struct Stack* stack_create(void) {
+struct Stack*
+stack_create(void) {
 	struct Stack *s = malloc(sizeof(struct Stack));
 	s->top = malloc(sizeof(struct Node));
 	s->size = 0;
@@ -24,7 +25,8 @@ struct Stack* stack_create(void) {
 }
 
 /* Creates a stack node and returns a pointer to it. */
-struct Node* node_create(int d) {
+struct Node*
+node_create(int d) {
 	struct Node *n = malloc(sizeof(struct Node));
 	n->next = NULL;
 	n->data = d;
@@ -32,7 +34,8 @@ struct Node* node_create(int d) {
 }
 
 /* Removes the top node from the stack. */
-void stack_pop(struct Stack *s) {
+void
+stack_pop(struct Stack *s) {
 	if (s->top != NULL) {
 		struct Node *temp;
 		temp = s->top;
@@ -45,7 +48,8 @@ void stack_pop(struct Stack *s) {
 }
 
 /* Displays the elements of the stack. */
-void stack_show(struct Stack *s) {
+void
+stack_show(struct Stack *s) {
 	struct Node *curr = s->top;
 	while(curr->next != NULL) {
    		printf("item=%i\n", curr->data);
@@ -56,7 +60,8 @@ void stack_show(struct Stack *s) {
 }
 
 /* Pushes data to the top of the stack. */
-void stack_push(struct Stack *s, int data) {
+void
+stack_push(struct Stack *s, int data) {
 	struct Node *head = malloc(sizeof(struct Node));
 	head->data = data;
 	head->next = NULL;
@@ -72,12 +77,14 @@ void stack_push(struct Stack *s, int data) {
 }
 
 /* Returns the value of the node at the top of the stack. */
-int stack_peek(struct Stack *s) {
+int
+stack_peek(struct Stack *s) {
 	return s->top->data;
 }
 
 /* Free the memory occupied by the stack nodes. */
-void free_stack(struct Stack *s) {
+void
+free_stack(struct Stack *s) {
     struct Node *temp;
     while (s->top != NULL) {
     	temp = s->top;
