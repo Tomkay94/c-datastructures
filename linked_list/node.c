@@ -60,7 +60,8 @@ free_nodes(struct Node *head) {
 }
 
 #ifdef NOT_TESTING
-	int main() {
-		return 0;
-	}
+int
+main() {
+	return 0;
+}
 #endif
