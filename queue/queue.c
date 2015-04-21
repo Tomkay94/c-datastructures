@@ -5,17 +5,6 @@
 	#include "queue.h"
 #endif
 
-struct Queue {
-	int size;
-	struct Node *front;
-	struct Node *back;
-};
-
-struct Node {
-	int data;
-	struct Node *next;
-};
-
 /* Creates a Queue, and returns a pointer to it. */
 struct Queue*
 queue_create() {

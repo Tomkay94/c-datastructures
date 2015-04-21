@@ -1,6 +1,15 @@
 #include <stdbool.h>
 
-struct Queue;
+struct Queue {
+	int size;
+	struct Node *front;
+	struct Node *back;
+};
+
+struct Node {
+	int data;
+	struct Node *next;
+};
 
 void
 enqueue(struct Queue *q, int data);

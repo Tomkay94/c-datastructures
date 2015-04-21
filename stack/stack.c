@@ -5,16 +5,6 @@
 	#include "stack.h"
 #endif
 
-struct Stack {
-	int size;
-	struct Node *top;
-};
-
-struct Node {
-	int data;
-	struct Node *next;
-};
-
 /* Creates an empty stack and returns a pointer to it. */
 struct Stack*
 stack_create(void) {

@@ -5,12 +5,6 @@
 	#include "node.h"
 #endif
 
-struct
-Node {
-	int data;
-	struct Node* next;
-};
-
 /* Create and set default memebrs for a Node. */
 /* Return a pointer to the created Node. */
 struct Node*

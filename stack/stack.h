@@ -1,6 +1,13 @@
 /* Stack data type. */
-struct Stack;
-struct Node;
+struct Stack {
+	int size;
+	struct Node *top;
+};
+
+struct Node {
+	int data;
+	struct Node *next;
+};
 
 /* Stack prototypes */
 struct Stack*

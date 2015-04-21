@@ -1,7 +1,10 @@
 #include <stdbool.h>
 
 /* Node datatype */
-struct Node;
+struct Node {
+	int data;
+	struct Node* next;
+};
 
 /* Node methods */
 struct Node*
