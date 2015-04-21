@@ -16,6 +16,13 @@ compile: node.c node.h
 	$(GCC) $(CFLAGS) $(NOT_TESTING) node.c -o node.out	
 
 #
+# Compile the tests and check for memory leaks.
+#
+leakcheck:
+	make tests && \
+	valgrind --track-origins=yes --leak-check=full ./tests.out
+
+#
 # Remove all executables.
 #
 clean:

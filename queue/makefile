@@ -16,6 +16,13 @@ compile: queue.c queue.h
 	$(GCC) $(CFLAGS) $(NOT_TESTING) queue.c -o queue.out	
 
 #
+# Compile the tests and check for memory leaks.
+#
+leakcheck:
+	make tests && \
+	valgrind --track-origins=yes --leak-check=full ./tests.out
+
+#
 # Remove all executables.
 #
 clean:

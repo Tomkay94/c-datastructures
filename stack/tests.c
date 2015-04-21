@@ -50,7 +50,7 @@ char *test_stack_push_updates_top_ref(void) {
 	stack_push(s, 15);
     MU_ASSERT("stack_push updates top ref 3", s->top->data == 15);
 
-	//free_stack(s);
+	free_stack(s);
 	return 0;
 }
 

@@ -1,6 +1,7 @@
 CFLAGS=-Wall
 GCC=gcc
 NOT_TESTING=-D NOT_TESTING
+
 #
 # Compile and run the test suite.
 #
@@ -14,6 +15,13 @@ tests: tests.c
 compile: stack.c stack.h
 	$(GCC) $(CFLAGS) $(NOT_TESTING) stack.c -o stack.out	
 
+#
+# Compile the tests and check for memory leaks.
+#
+leakcheck:
+	make tests && \
+	valgrind --track-origins=yes --leak-check=full ./tests.out
+        
 #
 # Remove all executables.
 #

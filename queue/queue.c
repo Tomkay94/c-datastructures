@@ -21,7 +21,7 @@ struct Queue* queue_create() {
 	struct Queue *q = malloc(sizeof(struct Queue));
 	q->size = 0;
 	q->front = malloc(sizeof(struct Node));
-	q->back = malloc(sizeof(struct Node));
+	q->back =  malloc(sizeof(struct Node));
 	return q;
 }
 
@@ -67,10 +67,10 @@ void dequeue(struct Queue *q) {
 
 	/* Regular case. */
 	if (q->size > 1) {
-		struct Node *temp;
-		temp = q->front;
+//		struct Node *temp;
+//		temp = q->front;
 		q->front = q->front->next;
-		free(temp);
+//		free(temp);
 	}
 
 	--(q->size);
@@ -99,6 +99,9 @@ void free_queue(struct Queue *q) {
 		q->front = q->front->next;
 		free(temp);
 	}
+//	free(q->front);
+//	free(q->back);
+	free(q);
 	return;
 }
 

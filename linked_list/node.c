@@ -50,6 +50,7 @@ void free_nodes(struct Node *head) {
 		head = head->next;
 		free(temp);
 	}
+	free(head);
 	return;
 }
 

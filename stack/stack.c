@@ -78,9 +78,15 @@ int stack_peek(struct Stack *s) {
 
 /* Free the memory occupied by the stack nodes. */
 void free_stack(struct Stack *s) {
+    struct Node *temp;
     while (s->top != NULL) {
-    	stack_pop(s);
+    	temp = s->top;
+    	s->top = s->top->next;
+    	free(temp);
+    	//stack_pop(s);
     }
+    free(s->top);
+    free(s);
 	return;
 }
 
