@@ -5,14 +5,16 @@
 	#include "node.h"
 #endif
 
-struct Node {
+struct
+Node {
 	int data;
 	struct Node* next;
 };
 
 /* Create and set default memebrs for a Node. */
 /* Return a pointer to the created Node. */
-struct Node* node_create(int data) {
+struct Node*
+node_create(int data) {
 	struct Node *n = malloc(sizeof(struct Node));
 	n->data = data;
 	n->next = NULL;
@@ -20,7 +22,8 @@ struct Node* node_create(int data) {
 }
 
 /* Create a node with data and append it to head. */
-void append_data(struct Node *head, int data) {
+void
+append_data(struct Node *head, int data) {
 	while(head->next != NULL) {
 		head = head->next;
 	}
@@ -30,7 +33,8 @@ void append_data(struct Node *head, int data) {
 
 /* Return true if the linked list has a Node with
    value data.*/
-bool contains_data(struct Node* head, int data) {
+bool
+contains_data(struct Node* head, int data) {
 	struct Node* curr = head;
 	while(curr != NULL) {
 		if (curr->data == data) {
@@ -42,7 +46,8 @@ bool contains_data(struct Node* head, int data) {
 }
 
 /* Free the memory occupied by the linked list. */
-void free_nodes(struct Node *head) {
+void
+free_nodes(struct Node *head) {
 	struct Node *temp;
 
 	while (head != NULL) {
