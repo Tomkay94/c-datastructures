@@ -6,7 +6,7 @@ int tests_run = 0;
 /* Test Cases */
 char *test_stack_create_sets_members(void) {
 	struct Stack *s = stack_create();
-	MU_ASSERT("stack_create sets size", s->size == 0);
+	MU_ASSERT("stack_create sets size",     s->size == 0);
 	MU_ASSERT("stack_create sets top next", s->top->next == NULL);
 
 	free(s);
@@ -15,7 +15,7 @@ char *test_stack_create_sets_members(void) {
 
 char *test_node_create_sets_members(void) {
 	struct Node *n = node_create(5);
-	MU_ASSERT("node_create sets data", n->data == 5);
+	MU_ASSERT("node_create sets data",      n->data == 5);
 	MU_ASSERT("node_create sets next null", n->next == NULL);
 
 	free(n);
@@ -39,6 +39,18 @@ char *test_stack_push_updates_size(void) {
 }
 
 char *test_stack_push_updates_top_ref(void) {
+	struct Stack *s = stack_create();
+
+	stack_push(s, 5);
+    MU_ASSERT("stack_push updates top ref 1", s->top->data == 5);
+
+	stack_push(s, 10);
+    MU_ASSERT("stack_push updates top ref 2", s->top->data == 10);
+
+	stack_push(s, 15);
+    MU_ASSERT("stack_push updates top ref 3", s->top->data == 15);
+
+	free(s);
 	return 0;
 }
 
@@ -46,7 +58,9 @@ char *test_stack_push_updates_top_ref(void) {
 char *test_suite(void) {
 	MU_RUN_TEST(test_stack_create_sets_members);
 	MU_RUN_TEST(test_node_create_sets_members);
+
 	MU_RUN_TEST(test_stack_push_updates_size);
+	MU_RUN_TEST(test_stack_push_updates_top_ref);
 	return 0;
 }
 
