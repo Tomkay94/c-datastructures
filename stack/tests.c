@@ -54,6 +54,26 @@ char *test_stack_push_updates_top_ref(void) {
 	return 0;
 }
 
+char *test_stack_peek_equals_top_ref(void) {
+    struct Stack *s = stack_create();
+
+    stack_push(s, 5);
+    MU_ASSERT("stack_push updates top ref 1", s->top->data == 5);
+    MU_ASSERT("stack_peek updates with top ref 1", s->top->data == stack_peek(s));
+
+    stack_push(s, 10);
+    MU_ASSERT("stack_push updates top ref 2", s->top->data == 10);
+    MU_ASSERT("stack_peek updates with top ref 2", s->top->data == stack_peek(s));
+
+    stack_push(s, 15);
+    MU_ASSERT("stack_push updates top ref 3", s->top->data == 15);
+    MU_ASSERT("stack_peek updates with top ref 3", s->top->data == stack_peek(s));
+
+    free(s);
+	return 0;
+}
+
+
 /* Test Suite */
 char *test_suite(void) {
 	MU_RUN_TEST(test_stack_create_sets_members);
@@ -61,6 +81,8 @@ char *test_suite(void) {
 
 	MU_RUN_TEST(test_stack_push_updates_size);
 	MU_RUN_TEST(test_stack_push_updates_top_ref);
+
+	MU_RUN_TEST(test_stack_peek_equals_top_ref);
 	return 0;
 }
 
