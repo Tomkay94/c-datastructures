@@ -15,6 +15,7 @@ struct Node {
 	struct Node *next;
 };
 
+/* Creates an empty stack and returns a pointer to it. */
 struct Stack* stack_create(void) {
 	struct Stack *s = malloc(sizeof(struct Stack));
 	s->top = malloc(sizeof(struct Node));
@@ -22,6 +23,7 @@ struct Stack* stack_create(void) {
 	return s;
 }
 
+/* Creates a stack node and returns a pointer to it. */
 struct Node* node_create(int d) {
 	struct Node *n = malloc(sizeof(struct Node));
 	n->next = NULL;
@@ -29,6 +31,7 @@ struct Node* node_create(int d) {
 	return n;
 }
 
+/* Removes the top node from the stack. */
 void stack_pop(struct Stack *s) {
 	if (s->top != NULL) {
 		s->top = s->top->next;
@@ -37,6 +40,7 @@ void stack_pop(struct Stack *s) {
 	return;
 }
 
+/* Displays the elements of the stack. */
 void stack_show(struct Stack *s) {
 	struct Node *curr = s->top;
 	while(curr->next != NULL) {
@@ -47,6 +51,7 @@ void stack_show(struct Stack *s) {
 	return;
 }
 
+/* Pushes data to the top of the stack. */
 void stack_push(struct Stack *s, int data) {
 	struct Node *head = malloc(sizeof(struct Node));
 	head->data = data;
@@ -60,6 +65,11 @@ void stack_push(struct Stack *s, int data) {
 	s->top = head;
 	++(s->size);
 	return;
+}
+
+/* Returns the value of the node at the top of the stack. */
+int stack_peek(struct Stack *s) {
+	return s->top->data;
 }
 
 #ifdef NOT_TESTING
