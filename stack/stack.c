@@ -28,8 +28,8 @@ stack_create(void) {
 struct Node*
 node_create(int d) {
 	struct Node *n = malloc(sizeof(struct Node));
-	n->next = NULL;
 	n->data = d;
+	n->next = NULL;
 	return n;
 }
 
@@ -90,7 +90,6 @@ free_stack(struct Stack *s) {
     	temp = s->top;
     	s->top = s->top->next;
     	free(temp);
-    	//stack_pop(s);
     }
     free(s->top);
     free(s);

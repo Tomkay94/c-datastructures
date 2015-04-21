@@ -20,9 +20,9 @@ struct Node {
 struct Queue*
 queue_create() {
 	struct Queue *q = malloc(sizeof(struct Queue));
-	q->size = 0;
-	q->front = malloc(sizeof(struct Node));
-	q->back =  malloc(sizeof(struct Node));
+	q->size  = 0;
+	q->front = NULL;
+	q->back  = NULL;
 	return q;
 }
 
@@ -41,15 +41,16 @@ enqueue(struct Queue *q, int data) {
 	struct Node *head = node_create(data);
 
 	/* First enqueue on empty. */
-	if (q->size == 0) {
+	if (q->front == NULL && q->back == NULL) {
 		q->front = head;
+		q->back  = head;
 	}
 
 	else {
 		q->back->next = head;
+		q->back       = head;
 	}
 
-	q->back = head;
 	++(q->size);
 	return;
 }
@@ -64,17 +65,18 @@ dequeue(struct Queue *q) {
 	}
 
 	/* Dequeue the only node. */
-	if (q->size == 1) {
-		q->front = NULL;
-		q->back = NULL;
-	}
+	else if (q->size == 1) {
+    	free(q->front);
+    	q->front = NULL;
+    	q->back  = NULL;
+    }
 
 	/* Regular case. */
-	if (q->size > 1) {
-//		struct Node *temp;
-//		temp = q->front;
+	else if (q->size > 1) {
+		struct Node *temp;
+		temp = q->front;
 		q->front = q->front->next;
-//		free(temp);
+		free(temp);
 	}
 
 	--(q->size);
@@ -105,8 +107,6 @@ free_queue(struct Queue *q) {
 		q->front = q->front->next;
 		free(temp);
 	}
-//	free(q->front);
-//	free(q->back);
 	free(q);
 	return;
 }
