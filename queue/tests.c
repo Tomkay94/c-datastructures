@@ -98,6 +98,28 @@ test_enqueue_updates_back_ref(void) {
 
 char *
 test_dequeue_updates_front_ref(void) {
+	struct Queue *q = queue_create();
+
+	enqueue(q, 5);
+	enqueue(q, 10);
+	enqueue(q, 15);
+	MU_ASSERT("queue back ref set to most recent data", q->back->data == 15);
+	MU_ASSERT("queue front ref set to oldest data",     q->front->data == 5);
+
+	dequeue(q);
+	MU_ASSERT("dequeue 1st does not update queue back ref", q->back->data == 15);
+	MU_ASSERT("dequeue 1st sets front ref to 10", 	        q->front->data == 10);
+
+	dequeue(q);
+	MU_ASSERT("dequeue 2nd does not update queue back ref ", q->back->data == 15);
+	MU_ASSERT("dequeue 2nd sets front ref to 15",            q->front->data == 15);
+	MU_ASSERT("dequeue 2nd sets front ref to back ref",      q->front == q->back);
+
+	dequeue(q);
+	MU_ASSERT("queue back ref set to NULL",  q->back == NULL);
+	MU_ASSERT("queue front ref set to NULL", q->front == NULL);
+
+	free_queue(q);
 	return 0;
 }
 
@@ -105,11 +127,15 @@ test_dequeue_updates_front_ref(void) {
 char *
 test_suite(void) {
 	MU_RUN_TEST(test_queue_create_sets_members);
+
 	MU_RUN_TEST(test_enqueue_on_empty);
 	MU_RUN_TEST(test_dequeue_on_empty);
+
 	MU_RUN_TEST(test_enqueue_updates_size);
 	MU_RUN_TEST(test_dequeue_updates_size);
+
 	MU_RUN_TEST(test_enqueue_updates_back_ref);
+	MU_RUN_TEST(test_dequeue_updates_front_ref);
 	return 0;
 }
 
