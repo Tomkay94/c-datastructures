@@ -78,6 +78,21 @@ test_dequeue_updates_size(void) {
 
 char *
 test_enqueue_updates_back_ref(void) {
+	struct Queue *q = queue_create();
+
+	enqueue(q, 5);
+	MU_ASSERT("queue back ref updates to node containing 5", q->back->data == 5);
+	MU_ASSERT("queue front ref set to 1st enqueue data", 	 q->front->data == 5);
+
+	enqueue(q, 10);
+	MU_ASSERT("queue back ref updates to node containing 10", q->back->data == 10);
+	MU_ASSERT("queue front ref unchanged after 2nd enqueue",  q->front->data == 5);
+
+	enqueue(q, 15);
+	MU_ASSERT("queue back ref updates to node containing 15", q->back->data == 15);
+	MU_ASSERT("queue front ref unchanged after 3rd enqueue",  q->front->data == 5);
+
+	free_queue(q);
 	return 0;
 }
 
@@ -94,6 +109,7 @@ test_suite(void) {
 	MU_RUN_TEST(test_dequeue_on_empty);
 	MU_RUN_TEST(test_enqueue_updates_size);
 	MU_RUN_TEST(test_dequeue_updates_size);
+	MU_RUN_TEST(test_enqueue_updates_back_ref);
 	return 0;
 }
 
