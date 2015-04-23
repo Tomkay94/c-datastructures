@@ -33,12 +33,7 @@ void append_item(struct Dynamic_Array *da, int item) {
 	else {
 		/* Factor the new capacity. */
 		da->capacity = da->capacity * da->resize_factor;
-		int *grownArray = malloc(sizeof(int) * da->capacity);
-		int i;
-		for (i = 0; i < da->size; ++i) {
-			grownArray[i] = da->array[i];
-		}
-		da->array = grownArray;
+		da->array = realloc(da->array, da->capacity);
 	}
 
 	++(da->size);
