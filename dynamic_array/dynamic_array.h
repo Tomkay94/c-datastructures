@@ -2,7 +2,7 @@ struct Dynamic_Array {
 	int resize_factor;
 	int capacity;
 	int size;
-	int *dynamic_array;
+	int *array;
 };
 
 struct Dynamic_Array *
