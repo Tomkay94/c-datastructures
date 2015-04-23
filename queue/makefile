@@ -1,5 +1,5 @@
-CFLAGS=-Wall
 GCC=gcc
+CFLAGS=-Wall
 NOT_TESTING=-D NOT_TESTING
 
 #
