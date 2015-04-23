@@ -13,8 +13,7 @@ test_dynamic_array_create_sets_members(void) {
 	MU_ASSERT("sets capacity to 5",      da->capacity == 5);
 	MU_ASSERT("sets resize factor to 2", da->resize_factor == 2);
 	MU_ASSERT("sets space for array",    da->array != NULL);
-	free(da->array);
-	free(da);
+	free_dynamic_array(da);
 	return 0;
 }
 

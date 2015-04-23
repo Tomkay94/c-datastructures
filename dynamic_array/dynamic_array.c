@@ -18,6 +18,15 @@ struct Dynamic_Array* dynamic_array_create(int capacity, int factor) {
 	return da;
 }
 
+/*
+ * Free the memory occupied by the dynamic array.
+ */
+void free_dynamic_array(struct Dynamic_Array *da) {
+	free(da->array);
+	free(da);
+	return;
+}
+
 #ifdef NOT_TESTING
 int
 main(int argc, char **argv) {
