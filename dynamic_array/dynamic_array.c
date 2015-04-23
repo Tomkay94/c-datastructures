@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../_common/emalloc.h"
+#include "../_common/erealloc.h"
 #ifndef DYNAMIC_ARRAY_H
 	#define DYNAMIC_ARRAY_H
 	#include "dynamic_array.h"
@@ -29,7 +30,7 @@ void append_item(struct Dynamic_Array *da, int item) {
 	if (da->size == da->capacity) {
 		/* Factor the new capacity. */
 		da->capacity = da->capacity * da->resize_factor;
-		da->array = realloc(da->array, da->capacity);
+		da->array = erealloc(da->array, da->capacity);
 	}
 
 	da->array[da->size] = item;
