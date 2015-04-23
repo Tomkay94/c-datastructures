@@ -1,4 +1,4 @@
-# C Datastructures
+# C Data Structures
 C implementations of various data structures and their operations. Each data structure has it's own set of tests, which can be run, and has been tested for memory leaks, which can also be run. 
 
 ## Running Tests
