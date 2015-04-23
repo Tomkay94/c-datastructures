@@ -24,7 +24,8 @@ dynamic_array_create(int capacity, int factor) {
  * Add the item to the end of the array.
  * Resize if the array has reached capacity.
  */
-void append_item(struct Dynamic_Array *da, int item) {
+void
+append_item(struct Dynamic_Array *da, int item) {
 
 	/* A resize is necessary. */
 	if (da->size == da->capacity) {

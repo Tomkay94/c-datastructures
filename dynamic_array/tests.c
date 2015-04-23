@@ -36,6 +36,23 @@ test_append_item_updates_size(void) {
 }
 
 char *
+test_append_item_adds_item(void) {
+	struct Dynamic_Array *da = dynamic_array_create(3, 2);
+
+	append_item(da, 5);
+	MU_ASSERT("append_item appends 1", da->array[da->size - 1] == 5);
+
+	append_item(da, 15);
+	MU_ASSERT("append_item appends 1", da->array[da->size - 1] == 15);
+
+	append_item(da, 25);
+	MU_ASSERT("append_item appends 1", da->array[da->size - 1] == 25);
+
+	free_dynamic_array(da);
+	return 0;
+}
+
+char *
 test_capacity_updates_by_resize_factor(void) {
 	int factor   = 2;
 	int capacity = 3;
@@ -70,6 +87,7 @@ char *
 test_suite(void) {
 	MU_RUN_TEST(test_dynamic_array_create_sets_members);
 	MU_RUN_TEST(test_append_item_updates_size);
+	MU_RUN_TEST(test_append_item_adds_item);
 	MU_RUN_TEST(test_capacity_updates_by_resize_factor);
 	return 0;
 }
