@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include "../common/emalloc.h"
 #ifndef QUEUE_H
 	#define QUEUE_H
 	#include "queue.h"
@@ -8,7 +8,7 @@
 /* Creates a Queue, and returns a pointer to it. */
 struct Queue*
 queue_create() {
-	struct Queue *q = malloc(sizeof(struct Queue));
+	struct Queue *q = emalloc(sizeof(struct Queue));
 	q->size  = 0;
 	q->front = NULL;
 	q->back  = NULL;
@@ -18,7 +18,7 @@ queue_create() {
 /* Creates a Node for the Queue, and returns a pointer to it. */
 struct Node*
 node_create(int d) {
-	struct Node *n = malloc(sizeof(struct Node));
+	struct Node *n = emalloc(sizeof(struct Node));
 	n->data = d;
 	n->next = NULL;
 	return n;

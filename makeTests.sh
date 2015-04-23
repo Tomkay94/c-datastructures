@@ -2,7 +2,7 @@
 
 for dir in $(ls -d */); do
   dirFile=${dir%%/*} # Remove end slash from dir
-  if  [ "$dirFile" != "test_framework" ]; then
+  if  [ "$dirFile" != "test_framework" ] && [ "$dirFile" != "common" ]; then
    	echo '==============================='
   	echo "*** Testing: $dirFile ***"
   	echo '==============================='

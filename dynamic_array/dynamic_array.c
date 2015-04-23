@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include "../common/emalloc.h"
 #ifndef DYNAMIC_ARRAY_H
 	#define DYNAMIC_ARRAY_H
 	#include "dynamic_array.h"
@@ -10,11 +10,11 @@
  * Return a pointer to the dynamic array.
  */
 struct Dynamic_Array* dynamic_array_create(int capacity, int factor) {
-	struct Dynamic_Array *da = malloc(sizeof(struct Dynamic_Array));
+	struct Dynamic_Array *da = emalloc(sizeof(struct Dynamic_Array));
 	da->capacity       = capacity;
 	da-> resize_factor = factor;
 	da->size           = 0;
-	da->array          = malloc(sizeof(sizeof(int) * capacity));
+	da->array          = emalloc(sizeof(sizeof(int) * capacity));
 	return da;
 }
 

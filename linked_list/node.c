@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include "../common/emalloc.h"
 #ifndef NODE_H
 	#define NODE_H
 	#include "node.h"
@@ -9,7 +9,7 @@
 /* Return a pointer to the created Node. */
 struct Node*
 node_create(int data) {
-	struct Node *n = malloc(sizeof(struct Node));
+	struct Node *n = emalloc(sizeof(struct Node));
 	n->data = data;
 	n->next = NULL;
 	return n;

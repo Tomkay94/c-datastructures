@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include "../common/emalloc.h"
 #ifndef STACK_H
 	#define STACK_H
 	#include "stack.h"
@@ -8,8 +8,8 @@
 /* Creates an empty stack and returns a pointer to it. */
 struct Stack*
 stack_create(void) {
-	struct Stack *s = malloc(sizeof(struct Stack));
-	s->top = malloc(sizeof(struct Node));
+	struct Stack *s = emalloc(sizeof(struct Stack));
+	s->top = emalloc(sizeof(struct Node));
 	s->size = 0;
 	return s;
 }
@@ -17,7 +17,7 @@ stack_create(void) {
 /* Creates a stack node and returns a pointer to it. */
 struct Node*
 node_create(int d) {
-	struct Node *n = malloc(sizeof(struct Node));
+	struct Node *n = emalloc(sizeof(struct Node));
 	n->data = d;
 	n->next = NULL;
 	return n;
@@ -52,7 +52,7 @@ stack_show(struct Stack *s) {
 /* Pushes data to the top of the stack. */
 void
 stack_push(struct Stack *s, int data) {
-	struct Node *head = malloc(sizeof(struct Node));
+	struct Node *head = emalloc(sizeof(struct Node));
 	head->data = data;
 	head->next = NULL;
 
