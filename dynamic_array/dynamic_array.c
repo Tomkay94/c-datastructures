@@ -12,11 +12,37 @@
 struct Dynamic_Array*
 dynamic_array_create(int capacity, int factor) {
 	struct Dynamic_Array *da = emalloc(sizeof(struct Dynamic_Array));
-	da->capacity       = capacity;
-	da-> resize_factor = factor;
-	da->size           = 0;
-	da->array          = emalloc(sizeof(sizeof(int) * capacity));
+	da->capacity      = capacity;
+	da->resize_factor = factor;
+	da->size          = 0;
+	da->array         = emalloc(sizeof(sizeof(int) * capacity));
 	return da;
+}
+
+/*
+ * Add the item to the end of the array.
+ * Resize if the array has reached capacity.
+ */
+void append_item(struct Dynamic_Array *da, int item) {
+
+	if (da->size < da->capacity) {
+		da->array[da->size] = item;
+	}
+
+	/* A resize is necessary. */
+	else {
+		/* Factor the new capacity. */
+		da->capacity = da->capacity * da->resize_factor;
+		int *grownArray = malloc(sizeof(int) * da->capacity);
+		int i;
+		for (i = 0; i < da->size; ++i) {
+			grownArray[i] = da->array[i];
+		}
+		da->array = grownArray;
+	}
+
+	++(da->size);
+	return;
 }
 
 /*

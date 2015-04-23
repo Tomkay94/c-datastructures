@@ -18,12 +18,59 @@ test_dynamic_array_create_sets_members(void) {
 	return 0;
 }
 
+char *
+test_append_item_updates_size(void) {
+	struct Dynamic_Array *da = dynamic_array_create(3, 2);
+
+	append_item(da, 5);
+	MU_ASSERT("append_item updates size to 1", da->size == 1);
+
+	append_item(da, 15);
+	MU_ASSERT("append_item updates size to 2", da->size == 2);
+
+	append_item(da, 25);
+	MU_ASSERT("append_item updates size to 3", da->size == 3);
+
+	free_dynamic_array(da);
+	return 0;
+}
+
+char *
+test_capacity_updates_by_resize_factor(void) {
+	int factor   = 2;
+	int capacity = 3;
+	struct Dynamic_Array *da = dynamic_array_create(capacity, factor);
+
+	append_item(da, 15);
+	append_item(da, 25);
+	append_item(da, 35);
+
+	MU_ASSERT("array size updated to 3", da->size == 3);
+	MU_ASSERT("capacity equals size",    da->capacity == da->size);
+	MU_ASSERT("resize factor unaltered", da->resize_factor == factor);
+
+	append_item(da, 45);
+	MU_ASSERT("capacity updated by resize factor", da->capacity == factor * capacity);
+	MU_ASSERT("array size updated to 4", da->size == 4);
+
+	append_item(da, 55);
+	MU_ASSERT("array size updated to 5", da->size == 5);
+
+	append_item(da, 65);
+	MU_ASSERT("array size updated to 6", da->size == 6);
+
+	free_dynamic_array(da);
+	return 0;
+}
+
 /*
  * Test Suite
  */
 char *
 test_suite(void) {
 	MU_RUN_TEST(test_dynamic_array_create_sets_members);
+	MU_RUN_TEST(test_append_item_updates_size);
+	MU_RUN_TEST(test_capacity_updates_by_resize_factor);
 	return 0;
 }
 
