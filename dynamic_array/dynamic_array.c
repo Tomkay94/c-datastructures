@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../common/emalloc.h"
+#include "../_common/emalloc.h"
 #ifndef DYNAMIC_ARRAY_H
 	#define DYNAMIC_ARRAY_H
 	#include "dynamic_array.h"

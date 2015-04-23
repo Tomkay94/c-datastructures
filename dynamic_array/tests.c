@@ -1,4 +1,4 @@
-#include "../test_framework/min_unit.h"
+#include "../_test_framework/min_unit.h"
 #include "dynamic_array.c"
 
 int tests_run = 0;
