@@ -9,8 +9,10 @@ int tests_run = 0;
 char *
 test_stack_create_sets_members(void) {
 	struct Stack *s = stack_create();
-	MU_ASSERT("stack_create sets size",     s->size == 0);
-	MU_ASSERT("stack_create sets top next", s->top->next == NULL);
+	MU_ASSERT("stack_create allocates memory", s != NULL);
+	MU_ASSERT("stack_create sets size",        s->size == 0);
+	MU_ASSERT("stack_create sets top next",    s->top != NULL);
+	MU_ASSERT("stack_create sets top next",    s->top->next == NULL);
 
 	free_stack(s);
 	return 0;

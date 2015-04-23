@@ -11,8 +11,9 @@ test_set_node_members(void) {
 
 	struct Node* n = node_create(10);
 
-	MU_ASSERT("node_create sets data", n->data == 10);
-	MU_ASSERT("node_create sets next", n->next == NULL);
+	MU_ASSERT("node_create allocated memory", n != NULL);
+	MU_ASSERT("node_create sets data",        n->data == 10);
+	MU_ASSERT("node_create sets next",        n->next == NULL);
 
 	free_nodes(n);
 	return 0;

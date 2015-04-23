@@ -9,6 +9,7 @@ int tests_run = 0;
 char *
 test_queue_create_sets_members(void) {
 	struct Queue *q = queue_create();
+	MU_ASSERT("queue_create allocates memory",     q != NULL);
 	MU_ASSERT("queue_create sets queue front ref", q->front == NULL);
 	MU_ASSERT("queue_create sets queue back ref",  q->back == NULL);
 	MU_ASSERT("queue_create sets size to 0",       q->size == 0);

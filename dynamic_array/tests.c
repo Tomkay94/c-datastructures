@@ -9,10 +9,11 @@ int tests_run = 0;
 char *
 test_dynamic_array_create_sets_members(void) {
 	struct Dynamic_Array *da = dynamic_array_create(5, 2);
-	MU_ASSERT("sets size to 0",          da->size == 0);
-	MU_ASSERT("sets capacity to 5",      da->capacity == 5);
-	MU_ASSERT("sets resize factor to 2", da->resize_factor == 2);
-	MU_ASSERT("sets space for array",    da->array != NULL);
+	MU_ASSERT("create allocates memory",        da != NULL);
+	MU_ASSERT("create sets size to 0",          da->size == 0);
+	MU_ASSERT("create sets capacity to 5",      da->capacity == 5);
+	MU_ASSERT("create sets resize factor to 2", da->resize_factor == 2);
+	MU_ASSERT("create allocates array memory",  da->array != NULL);
 	free_dynamic_array(da);
 	return 0;
 }
