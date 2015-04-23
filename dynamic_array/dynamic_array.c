@@ -25,18 +25,28 @@ dynamic_array_create(int capacity, int factor) {
  */
 void append_item(struct Dynamic_Array *da, int item) {
 
-	if (da->size < da->capacity) {
-		da->array[da->size] = item;
-	}
-
 	/* A resize is necessary. */
-	else {
+	if (da->size == da->capacity) {
 		/* Factor the new capacity. */
 		da->capacity = da->capacity * da->resize_factor;
 		da->array = realloc(da->array, da->capacity);
 	}
 
+	da->array[da->size] = item;
 	++(da->size);
+	return;
+}
+
+/*
+ * Display the dynamic array.
+ */
+void
+show_array(struct Dynamic_Array *da) {
+	int i;
+	for (i = 0; i < da->size; ++i) {
+		printf("index=%d, item=%d\n", i, da->array[i]);
+	}
+	printf("\n");
 	return;
 }
 
