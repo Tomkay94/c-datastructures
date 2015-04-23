@@ -9,7 +9,8 @@
  * Create a dynamic array with capacity that expands by factor.
  * Return a pointer to the dynamic array.
  */
-struct Dynamic_Array* dynamic_array_create(int capacity, int factor) {
+struct Dynamic_Array*
+dynamic_array_create(int capacity, int factor) {
 	struct Dynamic_Array *da = emalloc(sizeof(struct Dynamic_Array));
 	da->capacity       = capacity;
 	da-> resize_factor = factor;
@@ -21,7 +22,8 @@ struct Dynamic_Array* dynamic_array_create(int capacity, int factor) {
 /*
  * Free the memory occupied by the dynamic array.
  */
-void free_dynamic_array(struct Dynamic_Array *da) {
+void
+free_dynamic_array(struct Dynamic_Array *da) {
 	free(da->array);
 	free(da);
 	return;
