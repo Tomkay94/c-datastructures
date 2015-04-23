@@ -5,7 +5,9 @@
 	#include "stack.h"
 #endif
 
-/* Creates an empty stack and returns a pointer to it. */
+/*
+ * Creates an empty stack and returns a pointer to it.
+ */
 struct Stack*
 stack_create(void) {
 	struct Stack *s = emalloc(sizeof(struct Stack));
@@ -14,7 +16,9 @@ stack_create(void) {
 	return s;
 }
 
-/* Creates a stack node and returns a pointer to it. */
+/*
+ * Creates a stack node and returns a pointer to it.
+ */
 struct Node*
 node_create(int d) {
 	struct Node *n = emalloc(sizeof(struct Node));
@@ -23,7 +27,9 @@ node_create(int d) {
 	return n;
 }
 
-/* Removes the top node from the stack. */
+/*
+ * Removes the top node from the stack.
+ */
 void
 stack_pop(struct Stack *s) {
 	if (s->top != NULL) {
@@ -37,7 +43,9 @@ stack_pop(struct Stack *s) {
 	return;
 }
 
-/* Displays the elements of the stack. */
+/*
+ * Displays the elements of the stack.
+ */
 void
 stack_show(struct Stack *s) {
 	struct Node *curr = s->top;
@@ -49,7 +57,9 @@ stack_show(struct Stack *s) {
 	return;
 }
 
-/* Pushes data to the top of the stack. */
+/*
+ * Pushes data to the top of the stack.
+ */
 void
 stack_push(struct Stack *s, int data) {
 	struct Node *head = emalloc(sizeof(struct Node));
@@ -66,13 +76,17 @@ stack_push(struct Stack *s, int data) {
 	return;
 }
 
-/* Returns the value of the node at the top of the stack. */
+/*
+ * Returns the value of the node at the top of the stack.
+ */
 int
 stack_peek(struct Stack *s) {
 	return s->top->data;
 }
 
-/* Free the memory occupied by the stack nodes. */
+/*
+ * Free the memory occupied by the stack nodes.
+ */
 void
 free_stack(struct Stack *s) {
     struct Node *temp;

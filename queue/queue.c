@@ -5,7 +5,9 @@
 	#include "queue.h"
 #endif
 
-/* Creates a Queue, and returns a pointer to it. */
+/*
+ * Creates a Queue, and returns a pointer to it.
+ */
 struct Queue*
 queue_create() {
 	struct Queue *q = emalloc(sizeof(struct Queue));
@@ -15,7 +17,9 @@ queue_create() {
 	return q;
 }
 
-/* Creates a Node for the Queue, and returns a pointer to it. */
+/*
+ * Creates a Node for the Queue, and returns a pointer to it.
+ */
 struct Node*
 node_create(int d) {
 	struct Node *n = emalloc(sizeof(struct Node));
@@ -24,7 +28,9 @@ node_create(int d) {
 	return n;
 }
 
-/* Adds an element to the back of the queue. */
+/*
+ * Adds an element to the back of the queue.
+ */
 void
 enqueue(struct Queue *q, int data) {
 	struct Node *head = node_create(data);
@@ -44,7 +50,9 @@ enqueue(struct Queue *q, int data) {
 	return;
 }
 
-/* Remove the node from the front of the queue. */
+/*
+ * Remove the node from the front of the queue.
+ */
 void
 dequeue(struct Queue *q) {
 
@@ -72,7 +80,9 @@ dequeue(struct Queue *q) {
 	return;
 }
 
-/* Display the elements in the queue. */
+/*
+ * Display the elements in the queue.
+ */
 void
 q_show(struct Queue *q) {
 	if (q->size > 0) {
@@ -86,7 +96,9 @@ q_show(struct Queue *q) {
 	return;
 }
 
-/* Free the nodes in the queue. */
+/*
+ * Free the nodes in the queue.
+ */
 void
 free_queue(struct Queue *q) {
 	struct Node *temp;
@@ -100,7 +112,9 @@ free_queue(struct Queue *q) {
 	return;
 }
 
-/* Return true if the queue is empty. */
+/*
+ * Return true if the queue is empty.
+ */
 bool
 q_is_empty(struct Queue *q) {
 	return (q->size == 0);

@@ -1,4 +1,6 @@
-/* Stack data type. */
+/*
+ * Stack data type.
+ */
 struct Stack {
 	int size;
 	struct Node *top;
@@ -9,7 +11,9 @@ struct Node {
 	struct Node *next;
 };
 
-/* Stack prototypes */
+/*
+ * Stack prototypes.
+ */
 struct Stack*
 stack_create();
 

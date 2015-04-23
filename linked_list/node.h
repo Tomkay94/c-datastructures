@@ -1,12 +1,16 @@
 #include <stdbool.h>
 
-/* Node datatype */
+/*
+ * Node data type.
+ */
 struct Node {
 	int data;
 	struct Node* next;
 };
 
-/* Node methods */
+/*
+ * Node prototypes.
+ */
 struct Node*
 node_create(int data);
 

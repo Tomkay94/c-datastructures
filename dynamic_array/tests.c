@@ -3,7 +3,9 @@
 
 int tests_run = 0;
 
-/* Test Cases */
+/*
+ * Test Cases
+ */
 char *
 test_dynamic_array_create_sets_members(void) {
 	struct Dynamic_Array *da = dynamic_array_create(5, 2);
@@ -16,14 +18,18 @@ test_dynamic_array_create_sets_members(void) {
 	return 0;
 }
 
-/* Test Suite */
+/*
+ * Test Suite
+ */
 char *
 test_suite(void) {
 	MU_RUN_TEST(test_dynamic_array_create_sets_members);
 	return 0;
 }
 
-/* Test Runner */
+/*
+ * Test Runner
+ */
 int
 main(int argc, char **argv) {
 	char *result = test_suite();

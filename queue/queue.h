@@ -1,5 +1,8 @@
 #include <stdbool.h>
 
+/*
+ * Queue data type.
+ */
 struct Queue {
 	int size;
 	struct Node *front;
@@ -11,6 +14,9 @@ struct Node {
 	struct Node *next;
 };
 
+/*
+ * Queue prototypes.
+ */
 void
 enqueue(struct Queue *q, int data);
 

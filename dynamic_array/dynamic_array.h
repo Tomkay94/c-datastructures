@@ -1,3 +1,6 @@
+/*
+ * Dynamic array data type.
+ */
 struct Dynamic_Array {
 	int resize_factor;
 	int capacity;
@@ -5,6 +8,9 @@ struct Dynamic_Array {
 	int *array;
 };
 
+/*
+ * Dynamic array protoypes.
+ */
 struct Dynamic_Array *
 dynamic_array_create(int capacity, int resize_factor);
 

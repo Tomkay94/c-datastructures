@@ -5,8 +5,10 @@
 	#include "node.h"
 #endif
 
-/* Create and set default memebrs for a Node. */
-/* Return a pointer to the created Node. */
+/*
+ * Create and set default memebrs for a Node.
+ * Return a pointer to the created Node.
+ */
 struct Node*
 node_create(int data) {
 	struct Node *n = emalloc(sizeof(struct Node));
@@ -15,7 +17,9 @@ node_create(int data) {
 	return n;
 }
 
-/* Create a node with data and append it to head. */
+/*
+ * Create a node with data and append it to head.
+ */
 void
 append_data(struct Node *head, int data) {
 	while(head->next != NULL) {
@@ -25,8 +29,9 @@ append_data(struct Node *head, int data) {
 	return;
 }
 
-/* Return true if the linked list has a Node with
-   value data.*/
+/*
+ * Return true if the linked list has a Node with data.
+ */
 bool
 contains_data(struct Node* head, int data) {
 	struct Node* curr = head;
@@ -39,7 +44,9 @@ contains_data(struct Node* head, int data) {
 	return false;
 }
 
-/* Free the memory occupied by the linked list. */
+/*
+ * Free the memory occupied by the linked list.
+ */
 void
 free_nodes(struct Node *head) {
 	struct Node *temp;

@@ -3,7 +3,9 @@
 
 int tests_run = 0;
 
-/* Test Cases */
+/*
+ * Test Cases
+ */
 char *
 test_queue_create_sets_members(void) {
 	struct Queue *q = queue_create();
@@ -123,7 +125,9 @@ test_dequeue_updates_front_ref(void) {
 	return 0;
 }
 
-/* Test Suite */
+/*
+ * Test Suite
+ */
 char *
 test_suite(void) {
 	MU_RUN_TEST(test_queue_create_sets_members);
@@ -139,7 +143,9 @@ test_suite(void) {
 	return 0;
 }
 
-/* Test Runner */
+/*
+ * Test Runner
+ */
 int
 main(int argc, char **argv) {
 	char *result = test_suite();

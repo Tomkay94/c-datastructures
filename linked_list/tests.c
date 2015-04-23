@@ -3,7 +3,9 @@
 
 int tests_run = 0;
 
-/* Test Cases */
+/*
+ * Test Cases
+ */
 char *
 test_set_node_members(void) {
 
@@ -85,7 +87,9 @@ test_contains_data_one_node_false(void) {
 	return 0;
 }
 
-/* Test Suite */
+/*
+ * Test Suite
+ */
 char *
 test_suite(void) {
 	MU_RUN_TEST(test_set_node_members);
@@ -98,7 +102,9 @@ test_suite(void) {
     return 0;
 }
 
-/* Test Runner */
+/*
+ * Test Runner
+ */
 #ifndef NOT_TESTING
 int
 main(int ac, char **av) {
