@@ -84,7 +84,7 @@ test_capacity_updates_by_resize_factor(void) {
 
 char *
 test_has_item_exists(void) {
-	struct Dynamic_Array *da = dynamic_array_create(3, 2);
+	struct Dynamic_Array *da = dynamic_array_create(2, 2);
 
 	MU_ASSERT("item 5 does not exist", has_item(da, 5) == -1);
 	append_item(da, 5);
@@ -98,6 +98,33 @@ test_has_item_exists(void) {
 	append_item(da, 25);
 	MU_ASSERT("item 25 exists", has_item(da, 25) == 2);
 
+	free_dynamic_array(da);
+	return 0;
+}
+
+char *
+test_remove_item_exists(void) {
+	struct Dynamic_Array *da = dynamic_array_create(2, 2);
+
+	MU_ASSERT("item not present in the array", has_item(da, 5) == -1);
+	append_item(da, 5);
+	MU_ASSERT("item exists in the array", has_item(da, 5) == 0);
+	remove_item(da, 5);
+	MU_ASSERT("item was removed from the array", has_item(da, 5) == -1);
+
+	free_dynamic_array(da);
+	return 0;
+}
+
+char *
+test_has_item_returns_index(void) {
+	struct Dynamic_Array *da = dynamic_array_create(2, 2);
+
+	MU_ASSERT("has_item does not detect item 5", has_item(da, 5) == -1);
+	append_item(da, 5);
+	MU_ASSERT("has_item returns index of item 5", has_item(da, 5) == 0);
+
+	free_dynamic_array(da);
 	return 0;
 }
 
@@ -111,6 +138,8 @@ test_suite(void) {
 	MU_RUN_TEST(test_append_item_adds_item);
 	MU_RUN_TEST(test_capacity_updates_by_resize_factor);
 	MU_RUN_TEST(test_has_item_exists);
+	MU_RUN_TEST(test_has_item_returns_index);
+	MU_RUN_TEST(test_remove_item_exists);
 	return 0;
 }
 

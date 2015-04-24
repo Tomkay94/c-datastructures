@@ -51,9 +51,10 @@ remove_item(struct Dynamic_Array *da, int item) {
 	int index;
 	if ((index = has_item(da, item)) > -1) {
 		/* Copy the elements over the removed element.*/
-		for (; index + 1 < da->size; ++index) {
-			da->array[index + 1] = da->array[index];
+		for (; index < da->size; ++index) {
+			da->array[index] = da->array[index + 1];
 		}
+		--(da->size);
 	}
 	return;
 }
@@ -101,5 +102,6 @@ free_dynamic_array(struct Dynamic_Array *da) {
 int
 main(int argc, char **argv) {
 	return 0;
+
 }
 #endif
