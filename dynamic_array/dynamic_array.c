@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "../_common/emalloc.h"
 #include "../_common/erealloc.h"
 #ifndef DYNAMIC_ARRAY_H
@@ -16,7 +17,7 @@ dynamic_array_create(int capacity, int factor) {
 	da->capacity      = capacity;
 	da->resize_factor = factor;
 	da->size          = 0;
-	da->array         = emalloc(sizeof(sizeof(int) * capacity));
+	da->array         = calloc(capacity, sizeof(int));
 	return da;
 }
 
