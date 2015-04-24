@@ -44,6 +44,37 @@ append_item(struct Dynamic_Array *da, int item) {
 }
 
 /*
+ * Remove the first occurence of item from the array.
+ */
+void
+remove_item(struct Dynamic_Array *da, int item) {
+	int index;
+	if ((index = has_item(da, item)) > -1) {
+		/* Copy the elements over the removed element.*/
+		for (; index + 1 < da->size; ++index) {
+			da->array[index + 1] = da->array[index];
+		}
+	}
+	return;
+}
+
+/*
+ * Return the index of the item if it exists in the array.
+ * Return -1 otherwise.
+ */
+int
+has_item(struct Dynamic_Array *da, int item) {
+	int index = 0;
+	while(index < da->size) {
+		if (da->array[index] == item) {
+			return index;
+		}
+		++index;
+	}
+	return -1;
+}
+
+/*
  * Display the dynamic array.
  */
 void

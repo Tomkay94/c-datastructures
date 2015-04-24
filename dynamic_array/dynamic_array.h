@@ -21,7 +21,10 @@ void
 show(struct Dynamic_Array *da);
 
 void
-remove_item(struct Dynamic_Array *da, int index);
+remove_item(struct Dynamic_Array *da, int item);
 
 void
 free_dynamic_array(struct Dynamic_Array *da);
+
+int
+has_item(struct Dynamic_Array *da, int item);
