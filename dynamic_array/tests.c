@@ -82,6 +82,25 @@ test_capacity_updates_by_resize_factor(void) {
 	return 0;
 }
 
+char *
+test_has_item_exists(void) {
+	struct Dynamic_Array *da = dynamic_array_create(3, 2);
+
+	MU_ASSERT("item 5 does not exist", has_item(da, 5) == -1);
+	append_item(da, 5);
+	MU_ASSERT("item 5 exist", has_item(da, 5) == 0);
+
+	MU_ASSERT("item 15 does not exist", has_item(da, 15) == -1);
+	append_item(da, 15);
+	MU_ASSERT("item 15 exists", has_item(da, 15) == 1);
+
+	MU_ASSERT("item 25 does not exist", has_item(da, 25) == -1);
+	append_item(da, 25);
+	MU_ASSERT("item 25 exists", has_item(da, 25) == 2);
+
+	return 0;
+}
+
 /*
  * Test Suite
  */
@@ -91,6 +110,7 @@ test_suite(void) {
 	MU_RUN_TEST(test_append_item_updates_size);
 	MU_RUN_TEST(test_append_item_adds_item);
 	MU_RUN_TEST(test_capacity_updates_by_resize_factor);
+	MU_RUN_TEST(test_has_item_exists);
 	return 0;
 }
 
