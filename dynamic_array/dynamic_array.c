@@ -32,7 +32,7 @@ append_item(struct Dynamic_Array *da, int item) {
 	if (da->size == da->capacity) {
 		/* Factor the new capacity. */
 		da->capacity = da->capacity * da->resize_factor;
-		da->array = erealloc(da->array, sizeof(da->capacity));
+		da->array    = erealloc(da->array, sizeof(int) * da->capacity);
 	}
 
 	da->array[da->size] = item;

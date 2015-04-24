@@ -54,9 +54,9 @@ test_append_item_adds_item(void) {
 
 char *
 test_capacity_updates_by_resize_factor(void) {
-	int factor   = 2;
-	int capacity = 3;
-	struct Dynamic_Array *da = dynamic_array_create(capacity, factor);
+	int in_capacity = 3;
+	int in_factor   = 2;
+	struct Dynamic_Array *da = dynamic_array_create(in_capacity, in_factor);
 
 	append_item(da, 15);
 	append_item(da, 25);
@@ -64,10 +64,10 @@ test_capacity_updates_by_resize_factor(void) {
 
 	MU_ASSERT("array size updated to 3", da->size == 3);
 	MU_ASSERT("capacity equals size",    da->capacity == da->size);
-	MU_ASSERT("resize factor unaltered", da->resize_factor == factor);
+	MU_ASSERT("resize factor unaltered", da->resize_factor == in_factor);
 
 	append_item(da, 45);
-	MU_ASSERT("capacity updated by resize factor", da->capacity == factor * capacity);
+	MU_ASSERT("capacity updated by resize factor", da->capacity == in_factor * in_capacity);
 	MU_ASSERT("array size updated to 4", da->size == 4);
 
 	append_item(da, 55);
