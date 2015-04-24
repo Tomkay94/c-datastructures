@@ -40,13 +40,13 @@ test_append_item_adds_item(void) {
 	struct Dynamic_Array *da = dynamic_array_create(3, 2);
 
 	append_item(da, 5);
-	MU_ASSERT("append_item appends 1", da->array[da->size - 1] == 5);
+	MU_ASSERT("append_item appends 5", da->array[da->size - 1] == 5);
 
 	append_item(da, 15);
-	MU_ASSERT("append_item appends 1", da->array[da->size - 1] == 15);
+	MU_ASSERT("append_item appends 15", da->array[da->size - 1] == 15);
 
 	append_item(da, 25);
-	MU_ASSERT("append_item appends 1", da->array[da->size - 1] == 25);
+	MU_ASSERT("append_item appends 25", da->array[da->size - 1] == 25);
 
 	free_dynamic_array(da);
 	return 0;

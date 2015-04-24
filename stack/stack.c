@@ -11,7 +11,7 @@
 struct Stack*
 stack_create(void) {
 	struct Stack *s = emalloc(sizeof(struct Stack));
-	s->top = emalloc(sizeof(struct Node));
+	s->top  = NULL;
 	s->size = 0;
 	return s;
 }
@@ -49,7 +49,7 @@ stack_pop(struct Stack *s) {
 void
 stack_show(struct Stack *s) {
 	struct Node *curr = s->top;
-	while(curr->next != NULL) {
+	while(curr != NULL && curr->next != NULL) {
    		printf("item=%i\n", curr->data);
 		curr = curr->next;
 	}
@@ -91,7 +91,7 @@ void
 free_stack(struct Stack *s) {
     struct Node *temp;
     while (s->top != NULL) {
-    	temp = s->top;
+    	temp   = s->top;
     	s->top = s->top->next;
     	free(temp);
     }

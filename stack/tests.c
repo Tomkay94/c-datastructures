@@ -11,8 +11,7 @@ test_stack_create_sets_members(void) {
 	struct Stack *s = stack_create();
 	MU_ASSERT("stack_create allocates memory", s != NULL);
 	MU_ASSERT("stack_create sets size",        s->size == 0);
-	MU_ASSERT("stack_create sets top next",    s->top != NULL);
-	MU_ASSERT("stack_create sets top next",    s->top->next == NULL);
+	MU_ASSERT("stack_create sets top",         s->top == NULL);
 
 	free_stack(s);
 	return 0;
@@ -50,13 +49,13 @@ test_stack_push_updates_top_ref(void) {
 	struct Stack *s = stack_create();
 
 	stack_push(s, 5);
-    MU_ASSERT("stack_push updates top ref 1", s->top->data == 5);
+    MU_ASSERT("stack_push updates top ref to 5", s->top->data == 5);
 
 	stack_push(s, 10);
-    MU_ASSERT("stack_push updates top ref 2", s->top->data == 10);
+    MU_ASSERT("stack_push updates top ref to 10", s->top->data == 10);
 
 	stack_push(s, 15);
-    MU_ASSERT("stack_push updates top ref 3", s->top->data == 15);
+    MU_ASSERT("stack_push updates top ref to 15", s->top->data == 15);
 
 	free_stack(s);
 	return 0;
@@ -67,15 +66,15 @@ test_stack_peek_equals_top_ref(void) {
     struct Stack *s = stack_create();
 
     stack_push(s, 5);
-    MU_ASSERT("stack_push updates top ref 1", s->top->data == 5);
+    MU_ASSERT("stack_push updates top ref 1",      s->top->data == 5);
     MU_ASSERT("stack_peek updates with top ref 1", s->top->data == stack_peek(s));
 
     stack_push(s, 10);
-    MU_ASSERT("stack_push updates top ref 2", s->top->data == 10);
+    MU_ASSERT("stack_push updates top ref 2",      s->top->data == 10);
     MU_ASSERT("stack_peek updates with top ref 2", s->top->data == stack_peek(s));
 
     stack_push(s, 15);
-    MU_ASSERT("stack_push updates top ref 3", s->top->data == 15);
+    MU_ASSERT("stack_push updates top ref 3",      s->top->data == 15);
     MU_ASSERT("stack_peek updates with top ref 3", s->top->data == stack_peek(s));
 
     free_stack(s);
