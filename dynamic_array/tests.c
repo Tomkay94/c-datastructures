@@ -128,18 +128,46 @@ test_has_item_returns_index(void) {
 	return 0;
 }
 
+char *
+test_remove_item_not_exists(void) {
+	struct Dynamic_Array *da = dynamic_array_create(2, 2);
+
+	append_item(da, 5);
+	append_item(da, 15);
+	append_item(da, 25);
+	MU_ASSERT("array has size of 3 before remove", da->size == 3);
+
+	MU_ASSERT("item 35 does not exist in the array", has_item(da, 35) == -1);
+	MU_ASSERT("item 45 does not exist in the array", has_item(da, 45) == -1);
+	MU_ASSERT("item 55 does not exist in the array", has_item(da, 55) == -1);
+
+	remove_item(da, 35);
+	remove_item(da, 45);
+	remove_item(da, 55);
+
+	MU_ASSERT("array has size of 3 after remove", da->size == 3);
+
+	free_dynamic_array(da);
+	return 0;
+}
+
 /*
  * Test Suite
  */
 char *
 test_suite(void) {
 	MU_RUN_TEST(test_dynamic_array_create_sets_members);
+
 	MU_RUN_TEST(test_append_item_updates_size);
 	MU_RUN_TEST(test_append_item_adds_item);
+
 	MU_RUN_TEST(test_capacity_updates_by_resize_factor);
+
 	MU_RUN_TEST(test_has_item_exists);
 	MU_RUN_TEST(test_has_item_returns_index);
+
 	MU_RUN_TEST(test_remove_item_exists);
+	MU_RUN_TEST(test_remove_item_not_exists);
 	return 0;
 }
 
