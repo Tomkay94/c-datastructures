@@ -1,5 +1,7 @@
 #include <stdio.h>
+
 #include "../_common/emalloc.h"
+
 #ifndef STACK_H
 	#define STACK_H
 	#include "stack.h"

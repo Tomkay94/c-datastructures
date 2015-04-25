@@ -1,5 +1,7 @@
 #include <stdio.h>
+
 #include "../_common/emalloc.h"
+
 #ifndef NODE_H
 	#define NODE_H
 	#include "node.h"

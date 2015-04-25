@@ -1,5 +1,7 @@
 #include <stdio.h>
+
 #include "../_common/emalloc.h"
+
 #ifndef QUEUE_H
 	#define QUEUE_H
 	#include "queue.h"
