@@ -1,3 +1,5 @@
+#include <stdbool.h>
+
 /*
  * Stack data type.
  */
@@ -31,6 +33,9 @@ stack_show(struct Stack *s);
 
 int
 stack_peek(struct Stack *s);
+
+bool
+stack_is_empty(struct Stack *s);
 
 void
 free_stack(struct Stack *s);

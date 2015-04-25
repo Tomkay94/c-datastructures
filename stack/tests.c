@@ -81,7 +81,6 @@ test_stack_peek_equals_top_ref(void) {
 	return 0;
 }
 
-
 /*
  * Test Suite
  */

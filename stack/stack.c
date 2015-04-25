@@ -85,6 +85,14 @@ stack_peek(struct Stack *s) {
 }
 
 /*
+ * Return true if the stack is empty. False otherwise.
+ */
+bool
+stack_is_empty(struct Stack *s) {
+	return s->size == 0;
+}
+
+/*
  * Free the memory occupied by the stack nodes.
  */
 void
