@@ -81,6 +81,26 @@ test_stack_peek_equals_top_ref(void) {
 	return 0;
 }
 
+char *
+test_stack_is_empty_on_empty(void) {
+	struct Stack *s = stack_create();
+	MU_ASSERT("stack is empty with 0 items", stack_is_empty(s) == true);
+	free_stack(s);
+	return 0;
+}
+
+char *
+test_stack_is_empty_on_items(void) {
+	struct Stack *s = stack_create();
+	MU_ASSERT("stack is empty with 0 items", stack_is_empty(s) == true);
+	stack_push(s, 5);
+	stack_push(s, 15);
+	stack_push(s, 25);
+	MU_ASSERT("stack is empty with 0 items", stack_is_empty(s) == false);
+	free_stack(s);
+	return 0;
+}
+
 /*
  * Test Suite
  */
@@ -93,6 +113,9 @@ test_suite(void) {
 	MU_RUN_TEST(test_stack_push_updates_top_ref);
 
 	MU_RUN_TEST(test_stack_peek_equals_top_ref);
+
+	MU_RUN_TEST(test_stack_is_empty_on_empty);
+	MU_RUN_TEST(test_stack_is_empty_on_items);
 	return 0;
 }
 
