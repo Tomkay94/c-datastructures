@@ -17,7 +17,7 @@ node_create(int data);
 bool
 contains_data(struct Node *head, int data);
 
-void
+bool
 remove_data(struct Node *head, int data);
 
 void

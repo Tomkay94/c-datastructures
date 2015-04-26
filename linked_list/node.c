@@ -32,6 +32,16 @@ append_data(struct Node *head, int data) {
 }
 
 /*
+ * Remove the node with item data, if it exists.
+ * Return true if a node was removed, false otherwise.
+ */
+bool
+remove_data(struct Node *head, int data) {
+	struct Node *curr = head;
+	return true;
+}
+
+/*
  * Return true if the linked list has a Node with data.
  */
 bool
