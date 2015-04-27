@@ -33,12 +33,11 @@ append_data(struct Node *head, int data) {
 
 /*
  * Remove the node with item data, if it exists.
- * Return true if a node was removed, false otherwise.
  */
-bool
-remove_data(struct Node *head, int data) {
-	struct Node *curr = head;
-	return true;
+void
+remove_data(struct Node **phead, int data) {
+  	struct Node **pp = phead;
+	return;
 }
 
 /*
@@ -69,6 +68,18 @@ free_nodes(struct Node *head) {
 		free(temp);
 	}
 	free(head);
+	return;
+}
+
+void
+show_list(struct Node *head) {
+	struct Node *curr;
+	while(curr) {
+		printf("data=%d\n", curr->data);
+		curr = curr->next;
+	}
+	printf("\n");
+	free(curr);
 	return;
 }
 
