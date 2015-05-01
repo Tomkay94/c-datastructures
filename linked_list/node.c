@@ -35,37 +35,16 @@ append_data(struct Node *head, int data) {
  * Remove the node with item data, if it exists.
  */
 void
-remove_data(struct Node *head, int data) {
-	struct Node *curr = head;
-
-	while (curr != NULL) {
-
-		// beginning
-		if (curr->data == data) {
-			curr = head;
-			head = head->next;
-			free(curr);
-			return;
-		}
-
-		// middle
-		else if (curr->next->data == data) {
-			struct Node *temp = curr->next;
-			curr->next = curr->next->next;
-			free(temp);
-			free(curr);
-			return;
-		}
-		// last
-		else if (curr->next->next == NULL) {
-			struct Node *temp = curr->next;
-			curr->next = NULL;
-			free(temp);
-			free(curr);
-			return;
+remove_data(struct Node **head, int data) {
+	struct Node **curr;
+	for (curr = head; *curr; curr = &(*curr)->next) {
+		if ((*curr)->data == data) {
+			struct Node *next = (*curr)->next;
+			free(*curr);
+			*curr = next;
+			break;
 		}
 	}
-	//free(curr);
 	return;
 }
 
