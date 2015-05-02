@@ -170,7 +170,7 @@ test_suite(void) {
  */
 #ifndef NOT_TESTING
 int
-main(int ac, char **av) {
+main(int argc, char **argv) {
 	char *result = test_suite();
     printf("number of tests run: %d\n", tests_run);
     if (result) printf("FAIL: %s\n", result);
