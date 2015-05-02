@@ -117,6 +117,17 @@ test_remove_first_item(void) {
 
 char *
 test_remove_middle_item(void) {
+	struct Node *head = node_create(5);
+	append_data(head, 15);
+	append_data(head, 25);
+	append_data(head, 35);
+	append_data(head, 45);
+
+	MU_ASSERT("item 25 exists before remove, middle item", contains_data(head, 25) == true);
+	remove_data(&head, 25);
+	MU_ASSERT("item 25 does not exist after remove, middle item", contains_data(head, 25) == false);
+
+	free_nodes(head);
 	return 0;
 }
 
@@ -138,8 +149,9 @@ test_suite(void) {
 	MU_RUN_TEST(test_contains_data_one_node_true);
 	MU_RUN_TEST(test_contains_data_one_node_false);
 
-	MU_RUN_TEST(test_remove_first_item);
 	MU_RUN_TEST(test_remove_only_item);
+	MU_RUN_TEST(test_remove_first_item);
+	MU_RUN_TEST(test_remove_middle_item);
     return 0;
 }
 
