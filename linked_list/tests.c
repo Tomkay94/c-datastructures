@@ -88,6 +88,36 @@ test_contains_data_one_node_false(void) {
 	return 0;
 }
 
+char *
+test_remove_from_empty(void) {
+	return 0;
+}
+
+char *
+test_remove_first_item(void) {
+	struct Node *head = node_create(5);
+	append_data(head, 15);
+	append_data(head, 25);
+	append_data(head, 35);
+
+	MU_ASSERT("item 5 exists before remove", contains_data(head, 5) == true);
+	remove_data(&head, 5);
+	MU_ASSERT("item 5 does not exist after remove", contains_data(head, 5) == false);
+
+	free_nodes(head);
+	return 0;
+}
+
+char *
+test_remove_middle_item(void) {
+	return 0;
+}
+
+char *
+test_remove_last_item(void) {
+	return 0;
+}
+
 /*
  * Test Suite
  */
@@ -100,6 +130,8 @@ test_suite(void) {
 	MU_RUN_TEST(test_contains_data_present);
 	MU_RUN_TEST(test_contains_data_one_node_true);
 	MU_RUN_TEST(test_contains_data_one_node_false);
+
+	MU_RUN_TEST(test_remove_first_item);
     return 0;
 }
 
