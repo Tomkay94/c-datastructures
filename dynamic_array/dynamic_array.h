@@ -2,9 +2,9 @@
  * Dynamic array data type.
  */
 struct Dynamic_Array {
-	int resize_factor;
-	int capacity;
-	int size;
+	unsigned int resize_factor;
+	unsigned int capacity;
+	unsigned int size;
 	int *array;
 };
 

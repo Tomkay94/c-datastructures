@@ -4,7 +4,7 @@
  * Queue data type.
  */
 struct Queue {
-	int size;
+	unsigned int size;
 	struct Node *front;
 	struct Node *back;
 };

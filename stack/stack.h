@@ -4,7 +4,7 @@
  * Stack data type.
  */
 struct Stack {
-	int size;
+	unsigned int size;
 	struct Node *top;
 };
 
