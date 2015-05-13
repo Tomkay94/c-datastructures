@@ -12,8 +12,8 @@ tests: tests.c
 #
 # Compile the source files.
 #
-compile: node.c node.h
-	$(GCC) $(CFLAGS) $(NOT_TESTING) hashmap.c -o node.out	
+compile: hashmap.c hashmap.h
+	$(GCC) $(CFLAGS) $(NOT_TESTING) hashmap.c -o hashmap.out	
 
 #
 # Compile the tests and check for memory leaks.
