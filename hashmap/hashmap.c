@@ -9,13 +9,21 @@
 	#include "hashmap.h"
 #endif
 
-struct HashMap *hashmap_create(int capacity) {
+struct HashMap *
+hashmap_create(int capacity) {
 	struct HashMap *hm = emalloc(sizeof(struct HashMap));
 
 	hm->map      = ecalloc(capacity, sizeof(struct HashNode));
 	hm->capacity = capacity;
 	hm->size     = 0;
 	return hm;
+}
+
+void
+free_hashmap(struct HashMap *hm) {
+	free(hm->map);
+	free(hm);
+	return;
 }
 
 #ifdef NOT_TESTING

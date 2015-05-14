@@ -80,7 +80,7 @@ has_item(struct Dynamic_Array *da, int item) {
  */
 void
 show_array(struct Dynamic_Array *da) {
-	int i;
+	unsigned int i;
 	for (i = 0; i < da->size; ++i) {
 		printf("index=%d, item=%d\n", i, da->array[i]);
 	}

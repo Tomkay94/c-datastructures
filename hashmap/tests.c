@@ -8,6 +8,15 @@ int tests_run = 0;
  */
 char *
 test_hash_map_create_sets_members(void) {
+	struct HashMap *hm = hashmap_create(3);
+
+	MU_ASSERT("hm is not null after create",  hm != NULL);
+	MU_ASSERT("hm capacity set after create", hm->capacity == 3);
+	MU_ASSERT("hm size set after create",     hm->size == 0);
+	MU_ASSERT("hm map set after create",      sizeof(*(hm->map)) == sizeof(struct HashNode));
+	MU_ASSERT("hm map is array of pointers",  sizeof(hm->map) == sizeof(struct HashNode *));
+
+	free_hashmap(hm);
 	return 0;
 }
 

@@ -21,3 +21,6 @@ hash_map_create(int capacity);
 
 struct HashMap *
 hash_insert(struct HashMap *hm, void *data);
+
+void
+hashmap_free(struct HashMap *hm);
