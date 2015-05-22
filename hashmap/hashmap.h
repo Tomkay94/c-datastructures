@@ -1,3 +1,5 @@
+#include <stdbool.h>
+
 /*
  * Hash map data type.
  */
@@ -17,10 +19,16 @@ struct HashNode {
   * Hash map functions.
   */
 struct HashMap *
-hash_map_create(int capacity);
+hash_map_create(unsigned int capacity);
 
 struct HashMap *
 hash_insert(struct HashMap *hm, void *data);
 
 void
 hashmap_free(struct HashMap *hm);
+
+unsigned int *
+next_prime(unsigned int *num_ptr);
+
+bool
+is_prime(unsigned int *num_ptr);
